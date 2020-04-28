@@ -60,7 +60,7 @@ module java.sql {
 
 #### JShell overview
 - JShell cmd prompt start with cmd jshell and exit with cmd /exit
-- ![Alt text](/screenshots/jshell_start_exit.jpg?raw=true "Start and exit from jshell")
+- ![Alt text](/screenshots/jshell_start_exit.JPG?raw=true "Start and exit from jshell")
 - 
 
 #### 
