@@ -59,8 +59,74 @@ module java.sql {
 - Teaching Tool : If somebody wants to learn about java you often have to explain about IDEs, tools, compilers etc. all are create complexity and lengthy process so Now with JShell you just fire of the REPL.
 
 #### JShell overview
-- JShell cmd prompt start with cmd jshell and exit with cmd /exit
-- ![Alt text](/screenshots/jshell_start_exit.JPG?raw=true "Start and exit from jshell")
+- JShell cmd prompt start with cmd JShell and exit with cmd /exit
+
+![Alt text](/screenshots/jshell_start_exit.JPG?raw=true "Start and exit from JShell")
+
+- you can type any valid expression on JShell which is give you results
+
+![Alt text](/screenshots/jshell_basic_examples.JPG?raw=true "JShell expression examples")
+
+- JShell also supports to execute methods and statements, on JShell semicolon after single statements in optional 
+- JShell support threading code statements as well as try-catch statements
+
+![Alt text](/screenshots/jshell_statements.JPG?raw=true "JShell statements examples")
+
+#### JShell Declaration
+- With JShell it is even possible to declare variable, methods and classes inside of JShell. 
+- we can declare variable same as normal java programming, int x = 1, reassign it to x = 2
+- /vars /methods commands helps to list out how much variables and methods we already defined.
+
+![Alt text](/screenshots/jshell_declaration.JPG?raw=true "JShell declaration examples")
+
+#### JShell Env tips
+- /save sessionName.jsh -> use for save session
+- /open sessionName.jsh -> use for open session
+- /open normal.java -> open java file
+- /types tell the type of class/variable
 - 
 
-#### 
+## Stream API improvements
+- There are four methods added into Stream interface
+	1. Stream<T> takeWhile(Predicate<? super T> predicate)
+	   - this method accept a collection and choose those elements which is match with given predicates as a inputs.
+	2. Stream<T> dropWhile(Predicate<? super T> predicate)
+	   - in other hand dropWhile method will work opposite to takeWhile method. 
+	3. static Stream<T> ofNullable(T t) 
+	   - This is static factory method in Stream interface. 
+	   - this method is help to create 0 or 1 element streams. 
+	   - when you pass a null value then it returns empty stream. if argument value is not null then stream produce exactly one element. 
+	   - this function is very useful to those APIs who return null in construction of Stream pipelines.	
+	4. static Stream<T> iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next) 
+	   - This static method you can use to construct new stream. 
+	   - Stream interface have already one iterate method without hasNext parameter.
+
+- Note : takeWhile and dropWhile methods work well with ordered streams so you may find unexpected results with unordered streams so we need to take care that stream should be ordered before use this methods.
+
+#### New Collectors in Stream API
+- Java 9 added two new advance collectors 
+	1. filtering
+	- this is a static method and it returns a collector and take two arguments predicate and downstream collector
+	2. flatMapping
+	- this collector also accept two parameters and return a collector. 
+
+## Additional methods in optional
+	- optional now contains some additional methods like stream(), ifPresentOrElse(), or().
+	- It means optional now contains stream features as well.
+TODO : add examples
+
+## Small language changes
+	- underscore in identifier is legal
+	```
+		String _ = "underscore"; //valid now
+	```
+	- improvement in try-with-resources
+	 - here you can use already created resources with try()
+	- better generic type interface for anonymous class
+	```
+		List<anything> lis = new ArrayList<>() { 
+		  //code 
+		}
+	```
+	- private interface methods
+	- 
